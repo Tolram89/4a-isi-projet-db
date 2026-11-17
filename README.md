@@ -1,14 +1,14 @@
-# Pol-eat-heck — Base de données (`4a-isi-projet-db`)
+# Pol-eat-heck — Database (`4a-isi-projet-db`)
 
-Modélisation, schémas SQLite/SQLModel et scripts d'administration de l'application de réservation de menus **Pol-eat-heck**.
+Data modeling, SQLite/SQLModel schemas, and administration scripts for the **Pol-eat-heck** menu reservation application.
 
-## Équipe & Dépôts liés
+## Team & Related Repositories
 
-* **Collaborateurs :** (`@Tolram89`), (`Natkbz`), (`dcr29`)
-* **Back-end (FastAPI) :** [4a-isi-projet-back](https://github.com/Natkbz/4a-isi-projet-back) 
-* **Front-end (HTML/CSS/JS) :** [4a-isi-projet-front](https://github.com/dcr29/4a-isi-projet-front)
+* **Collaborators:** `@Tolram89`, `@Natkbz`, `@dcr29`
+* **Back-end (FastAPI):** [4a-isi-projet-back](https://github.com/Tolram89/4a-isi-projet-back)
+* **Front-end (HTML/CSS/JS):** [4a-isi-projet-front](https://github.com/Tolram89/4a-isi-projet-front)
 
-## Conception de la base de données (MLD / UML)
+## Database Design 
 
 ```mermaid
 classDiagram
@@ -93,6 +93,10 @@ classDiagram
     Menu "1" *-- "1..*" MenuProduct : consists of
     MenuProduct "0..*" --> "1" Product : includes
 ```
-    
+### Core Business Rules
+* **User roles (`User.role`):** `STANDARD` or `ADMIN`.
+* **Order statuses (`Order.status`):** `PENDING`, `COMPLETED`, `CANCELLED`, `NO_SHOW`.
+* **Menu availability:** A menu is permanent when both `start_date` and `end_date` are `NULL`, restricted to a single day when `start_date == end_date`, or valid over a specific date range.
+* **Soft Delete:** Deleted products and menus are flagged with `is_deleted = true` to preserve the integrity of historical orders.
     
     
