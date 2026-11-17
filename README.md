@@ -1,8 +1,8 @@
 ```mermaid
 classDiagram
     class User {
-        +int id <<PK>>
-        +string username <<UK>>
+        +int id (PK)
+        +string username (UK)
         +string password_hash
         +string role
         +bool is_blocked
@@ -10,13 +10,13 @@ classDiagram
     }
 
     class Category {
-        +int id <<PK>>
-        +string name <<UK>>
+        +int id (PK)
+        +string name (UK)
     }
 
     class Product {
-        +int id <<PK>>
-        +int category_id [0..1] <<FK>>
+        +int id (PK)
+        +int category_id [0..1] (FK)
         +string name
         +string description [0..1]
         +float price
@@ -26,7 +26,7 @@ classDiagram
     }
 
     class Menu {
-        +int id <<PK>>
+        +int id (PK)
         +string name
         +string description [0..1]
         +float price
@@ -37,38 +37,38 @@ classDiagram
     }
 
     class MenuProduct {
-        +int menu_id <<PK, FK>>
-        +int product_id <<PK, FK>>
+        +int menu_id (PK, FK)
+        +int product_id (PK, FK)
         +int quantity
     }
 
     class Order {
-        +int id <<PK>>
-        +int user_id <<FK>>
+        +int id (PK)
+        +int user_id (FK)
         +datetime created_at
         +date pickup_date
         +string status
     }
 
     class OrderProduct {
-        +int id <<PK>>
-        +int order_id <<FK>>
-        +int product_id <<FK>>
+        +int id (PK)
+        +int order_id (FK)
+        +int product_id (FK)
         +int quantity
         +float unit_price
     }
 
     class OrderMenu {
-        +int id <<PK>>
-        +int order_id <<FK>>
-        +int menu_id <<FK>>
+        +int id (PK)
+        +int order_id (FK)
+        +int menu_id (FK)
         +int quantity
         +float unit_price
     }
 
     class ClosureDay {
-        +int id <<PK>>
-        +date closure_date <<UK>>
+        +int id (PK)
+        +date closure_date (UK)
         +string reason [0..1]
     }
 
