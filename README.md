@@ -42,7 +42,7 @@ classDiagram
         +string name
         +string description [0..1]
         +float price
-        +date start_date [0..1]
+        +date start_date
         +date end_date [0..1]
         +bool is_available
         +bool is_deleted
@@ -96,7 +96,7 @@ classDiagram
 ### Core Business Rules
 * **User roles (`User.role`):** `STANDARD` or `ADMIN`.
 * **Order statuses (`Order.status`):** `PENDING`, `COMPLETED`, `CANCELLED`, `NO_SHOW`.
-* **Menu availability:** A menu is permanent when both `start_date` and `end_date` are `NULL`, restricted to a single day when `start_date == end_date`, or valid over a specific date range.
+* **Menu availability:** A menu is permanent when `end_date` are `NULL`, restricted to a single day when `start_date == end_date`, or valid over a specific date range.
 * **Soft Delete:** Deleted products and menus are flagged with `is_deleted = true` to preserve the integrity of historical orders.
     
     
